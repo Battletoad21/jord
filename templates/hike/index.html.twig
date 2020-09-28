@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Toutes les randonnées' %}
+
+{% block body %}
+    <div class="container mt-3">
+        <h1>Toutes les randonnées</h1>
+        <h2>In Hikes Index </h2>
+
+        <div class="row flex">
+            {% for hike in hikes %}
+                <div class="col-3">
+                    <div class="card-body">
+                        <h4 class="card-title">    
+                            <a href="{{ path('hike_show', {id: hike.id}) }}">{{ hike.title }}</a>
+                        </h4>
+                        <p class="card-text">{{ hike.city }}, {{ hike.distance }}km</p>
+                        <div class="text-alert">Difficulté: {{ hike.difficulty }}</div>
+                    </div>
+                </div>
+            {% endfor %} %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+
+            </div>
+            <div class="col-md-4">
+                <h1>{{ hike.title }}</h1>
+                <h2>{{ hike.distance }}Km, {{ hike.time }} Heures</h2>
+            </div>
+        </div>
+
+        <p>
+            {{ hike.description }}
+        </p>
+    </div>
+
+{% endblock %}
+
