@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <div class="container mt-4">
+        <h3>Editer la randonnée</h3>
+
+        {{ form_start(form) }}
+            <div class="row mt-5">
+                <div class="col-md-4">{{ form_row(form.title) }}</div>
+                <div class="col-md-4">{{ form_row(form.time) }}</div>
+                <div class="col-md-4">{{ form_row(form.distance) }}</div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-2">{{ form_row(form.difficulty) }}</div>
+                <div class="col-md-2">{{ form_row(form.positive_climb) }}</div>
+                <div class="col-md-2">{{ form_row(form.negative_climb) }}</div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-3">{{ form_row(form.city) }}</div>
+                <div class="col-md-3">{{ form_row(form.postal_code) }}</div>
+                <div class="col-md-2">{{ form_row(form.start_lat) }}</div>
+                <div class="col-md-2">{{ form_row(form.start_lng) }}</div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-6">{{ form_row(form.description) }}</div>
+            </div>
+
+            {{ form_widget(form) }}
+            <button class="btn btn-primary">Sauvegarder les changements</button>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
