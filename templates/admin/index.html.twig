@@ -7,7 +7,7 @@
         
         <h1>Administrateur de randonnées</h1>
 
-        {% for message in app.flashed('success') %}
+        {% for message in app.flashes('success') %}
             <div class="alert alert-success">
                 {{ message }}
             </div>
