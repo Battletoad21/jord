@@ -5,9 +5,12 @@ namespace App\Entity;
 use App\Repository\HikeRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * @ORM\Entity(repositoryClass=HikeRepository::class)
+ * @UniqueEntity("title")
  */
 class Hike
 {
@@ -40,16 +43,19 @@ class Hike
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\PositiveOrZero
      */
     private $positive_climb;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\NegativeOrZero
      */
     private $negative_climb;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Choice({"Facile", "Moyenne", "Difficile"})
      */
     private $difficulty;
 

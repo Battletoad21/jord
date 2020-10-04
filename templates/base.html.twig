@@ -19,6 +19,12 @@
                         <a class="nav-link" href="{{ path('hike_index') }}">Toutes les randonnées</a>
                     </li>
                 </ul>
+                {% if app.user %}
+                    {{ app.user.email }}
+                    <a href="{{ path('app_logout') }}">Déconnexion</a>
+                {% else %}
+                    <a href="{{ path('app_login') }}">Connexion</a>
+                {% endif %}
             </div>
         </nav>
         {% block body %}{% endblock %}
