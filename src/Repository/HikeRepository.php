@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Hike;
+use App\Entity\HikeSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -17,6 +18,27 @@ class HikeRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Hike::class);
+    }
+
+    /**
+     * @return Query
+     */
+    public function findSearchedHike(HikeSearch $search)
+    {
+        $query = $this->createQueryBuilder('p');
+            if ($search->getDifficulty()){
+                $query = $query
+                    ->andWhere('p.difficulty = :difficulty')
+                    ->setParameter('difficulty', $search->getDifficulty());
+            }
+
+            if ($search->getPostalCode()){
+                $query = $query
+                    ->andWhere('p.postal_code LIKE :postalCode')
+                    ->setParameter('postalCode', '%'.$search->getPostalCode().'%');
+            }
+
+        return $query->getQuery()->execute();
     }
 
     // /**
