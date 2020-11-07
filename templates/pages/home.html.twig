@@ -1,10 +1,23 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('home') }}
+    <link href="https://fonts.googleapis.com/css2?family=Princess+Sofia&display=swap" rel="stylesheet"> 
+{% endblock %}
+
 {% block title 'Hello' %}
 
 {% block body %}
-    <div class="jumbotron text-center">
-        <h1>Jord</h1>
-        
+
+    <div class="bg-img"></div>
+    <div class="bg-text">
+        <p>Jord</p>
     </div>
+
+ {% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('home') }}
+{% endblock %}
+
 {% endblock %}
